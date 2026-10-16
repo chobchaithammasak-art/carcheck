@@ -41,6 +41,12 @@
   .tabs button.on { background: #e3effd; border-color: var(--blue); color: var(--navy); font-weight: 700; }
   .note { font-size: 13px; color: var(--muted); margin-top: 10px; }
   b.k { background: #eef2f8; border-radius: 6px; padding: 1px 6px; font-weight: 600; }
+  small { color: var(--muted); font-size: 13px; line-height: 1.5; display: inline-block; }
+  .card[hidden] { display: none; }
+  .warn { background: #fff4e5; border: 1px solid #f6c983; font-size: 15px; line-height: 1.6; }
+  .btn2 { display: block; width: 100%; text-align: center; margin-top: 10px; background: var(--blue); color: #fff; border: 0; text-decoration: none;
+    font-weight: 700; font-size: 16px; padding: 12px; border-radius: 12px; font-family: inherit; cursor: pointer; }
+  .btn2.big { background: var(--orange); margin-top: 0; font-size: 17px; padding: 14px; }
 </style>
 </head>
 <body>
@@ -53,21 +59,37 @@
 
   <div class="card"><a class="open" id="openBtn" href="#">เปิดแอปตรวจเช็ครถ</a></div>
 
+  <div class="card warn" id="inapp" hidden>
+    <b>⚠️ ตอนนี้เปิดอยู่ในแอป LINE / Facebook</b><br>
+    แอปพวกนี้ไม่มีเมนูเพิ่มไอคอน ต้องเปิดหน้านี้ใน <span id="inappBrowser">Safari / Chrome</span> ก่อน
+    <a class="btn2" id="extBtn" href="#">เปิดในเบราว์เซอร์</a>
+    <div class="note" id="copyNote">หรือกดค้างที่ลิงก์ แล้วเลือก "เปิดในเบราว์เซอร์" / คัดลอกลิงก์ไปวางใน Safari หรือ Chrome</div>
+  </div>
+
+  <div class="card" id="installCard" hidden>
+    <button class="btn2 big" id="installBtn" type="button">➕ เพิ่มไอคอนลงหน้าจอ</button>
+  </div>
+
   <div class="card">
     <h2>📲 เพิ่มไอคอนไว้บนหน้าจอมือถือ</h2>
     <div class="tabs"><button type="button" data-os="ios">iPhone</button><button type="button" data-os="android">Android</button></div>
     <div class="os" id="os-ios"><ol>
-      <li>เปิดหน้านี้ด้วย <b>Safari</b></li>
-      <li>แตะปุ่มแชร์ <b class="k">⬆︎</b> ด้านล่างจอ</li>
-      <li>เลื่อนลงแล้วแตะ <b class="k">เพิ่มไปยังหน้าจอโฮม</b></li>
+      <li>เปิดหน้านี้ด้วย <b>Safari</b> (ไม่ใช่ใน LINE / Facebook)</li>
+      <li>แตะปุ่มแชร์ <b class="k">⬆︎</b> (สี่เหลี่ยมมีลูกศรชี้ขึ้น) ที่แถบด้านล่าง<br>
+        <small>iOS 26: ถ้าไม่เห็น ให้แตะ <b class="k">⋯</b> ที่มุมขวาล่างก่อน แล้วแตะ <b class="k">แชร์</b></small></li>
+      <li>เลื่อนรายการลงแล้วแตะ <b class="k">เพิ่มไปยังหน้าจอโฮม</b><br>
+        <small>ถ้าไม่มี ให้เลื่อนลงล่างสุด → <b class="k">แก้ไขการทำงาน</b> → กด ➕ ที่ "เพิ่มไปยังหน้าจอโฮม"</small></li>
       <li>แตะ <b class="k">เพิ่ม</b> มุมขวาบน</li>
-    </ol></div>
+    </ol>
+    <div class="note">ใช้ Chrome บน iPhone ก็ได้: แตะ <b class="k">⬆︎</b> ที่แถบที่อยู่ด้านบน → <b class="k">เพิ่มไปยังหน้าจอโฮม</b></div></div>
     <div class="os" id="os-android"><ol>
       <li>เปิดหน้านี้ด้วย <b>Chrome</b></li>
-      <li>แตะเมนู <b class="k">⋮</b> มุมขวาบน</li>
-      <li>แตะ <b class="k">เพิ่มลงในหน้าจอหลัก</b> หรือ <b class="k">ติดตั้งแอป</b></li>
+      <li>ถ้ามีปุ่มสีส้ม <b class="k">➕ เพิ่มไอคอนลงหน้าจอ</b> ด้านบน แตะได้เลย</li>
+      <li>ถ้าไม่มี ให้แตะเมนู <b class="k">⋮</b> มุมขวาบน</li>
+      <li>แตะ <b class="k">เพิ่มลงในหน้าจอหลัก</b> หรือ <b class="k">ติดตั้งแอป</b> (บางรุ่นอยู่ใน <b class="k">แชร์</b>)</li>
       <li>แตะ <b class="k">เพิ่ม</b> / <b class="k">ติดตั้ง</b></li>
-    </ol></div>
+    </ol>
+    <div class="note">Samsung Internet: แตะ <b class="k">☰</b> ด้านล่าง → <b class="k">เพิ่มหน้าไปที่</b> → <b class="k">หน้าจอหลัก</b></div></div>
     <div class="note">แตะไอคอน "ตรวจเช็ครถ" บนหน้าจอ แล้วระบบจะเปิดแอปให้ทันที (ล็อกอินครั้งแรกครั้งเดียว ระบบจำไว้ 30 วัน)</div>
   </div>
 </div>
@@ -82,6 +104,33 @@
   }
   document.querySelectorAll('[data-os]').forEach(function (b) { b.onclick = function () { show(b.dataset.os); }; });
   show(isIOS ? 'ios' : 'android');
+
+  // เปิดในแอป LINE / Facebook / Instagram ฯลฯ → ไม่มีเมนูเพิ่มไอคอน ให้เปิดในเบราว์เซอร์จริงก่อน
+  var ua = navigator.userAgent;
+  var isLine = /Line\//i.test(ua);
+  var inApp = isLine || /FBAN|FBAV|FB_IAB|Instagram|Messenger|MicroMessenger|TikTok|; wv\)/i.test(ua);
+  if (inApp) {
+    var here = location.origin + location.pathname;
+    var ext = here + '?openExternalBrowser=1';
+    if (!isLine && !isIOS) ext = 'intent://' + location.host + location.pathname + '#Intent;scheme=https;package=com.android.chrome;end';
+    document.getElementById('extBtn').href = ext;
+    document.getElementById('inappBrowser').textContent = isIOS ? 'Safari' : 'Chrome';
+    document.getElementById('inapp').hidden = false;
+  }
+
+  // Android / Chrome: ปุ่มติดตั้งจริง (ระบบถามยืนยันให้)
+  var deferred = null;
+  window.addEventListener('beforeinstallprompt', function (e) {
+    e.preventDefault(); deferred = e;
+    document.getElementById('installCard').hidden = false;
+  });
+  document.getElementById('installBtn').onclick = function () {
+    if (!deferred) return;
+    deferred.prompt();
+    deferred.userChoice.then(function () { deferred = null; document.getElementById('installCard').hidden = true; });
+  };
+  window.addEventListener('appinstalled', function () { document.getElementById('installCard').hidden = true; });
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(function () {});
 </script>
 </body>
 </html>
