@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ตรวจเช็ครถ</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ตรวจเช็ครถ">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0d3c84">
+<script>
+  // ลิงก์เว็บแอปเดิม (ไม่เปลี่ยน) — แตะไอคอนบนหน้าจอแล้วพาไปที่นี่ทันที
+  var APP_URL = 'https://script.google.com/macros/s/AKfycbw3zgIqijVzlU2v2ICJLL1nrLhvqiCdbuR3UltPEOv_ccMMLX1c05JS1W3P6sK_WG9L/exec';
+  var standalone = window.navigator.standalone === true ||
+    (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) ||
+    /[?&]launch=1/.test(location.search);
+  if (standalone) location.replace(APP_URL);
+</script>
+<style>
+  :root { --blue: #1565c0; --navy: #0d3c84; --orange: #f57c00; --text: #1d2433; --muted: #6b7385; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "Segoe UI", "Noto Sans Thai", Tahoma, sans-serif; color: var(--text);
+    background: linear-gradient(180deg, var(--navy), var(--blue) 260px, #f2f5fa 260px); min-height: 100vh; }
+  .wrap { max-width: 460px; margin: 0 auto; padding: 32px 16px 40px; }
+  .hero { text-align: center; color: #fff; }
+  .hero img { width: 112px; height: 112px; border-radius: 26px; box-shadow: 0 8px 24px rgba(0,0,0,.3); }
+  .hero h1 { font-size: 22px; margin: 14px 0 4px; }
+  .hero p { margin: 0; opacity: .85; font-size: 14px; }
+  .card { background: #fff; border-radius: 16px; padding: 18px; margin-top: 22px; box-shadow: 0 4px 16px rgba(16,40,80,.12); }
+  .open { display: block; text-align: center; background: var(--orange); color: #fff; text-decoration: none; font-weight: 700;
+    font-size: 17px; padding: 14px; border-radius: 12px; }
+  h2 { font-size: 16px; margin: 0 0 10px; }
+  ol { margin: 0; padding-left: 22px; line-height: 1.75; font-size: 15px; }
+  .os { display: none; } .os.show { display: block; }
+  .tabs { display: flex; gap: 8px; margin-bottom: 12px; }
+  .tabs button { flex: 1; border: 1px solid #d6dce6; background: #fff; border-radius: 10px; padding: 8px; font-size: 14px; font-family: inherit; cursor: pointer; }
+  .tabs button.on { background: #e3effd; border-color: var(--blue); color: var(--navy); font-weight: 700; }
+  .note { font-size: 13px; color: var(--muted); margin-top: 10px; }
+  b.k { background: #eef2f8; border-radius: 6px; padding: 1px 6px; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <img src="apple-touch-icon.png" alt="ไอคอน MTK : CLT">
+    <h1>ระบบตรวจเช็ครถ</h1>
+    <p>MASTERKOOL · CL TECH</p>
+  </div>
+
+  <div class="card"><a class="open" id="openBtn" href="#">เปิดแอปตรวจเช็ครถ</a></div>
+
+  <div class="card">
+    <h2>📲 เพิ่มไอคอนไว้บนหน้าจอมือถือ</h2>
+    <div class="tabs"><button type="button" data-os="ios">iPhone</button><button type="button" data-os="android">Android</button></div>
+    <div class="os" id="os-ios"><ol>
+      <li>เปิดหน้านี้ด้วย <b>Safari</b></li>
+      <li>แตะปุ่มแชร์ <b class="k">⬆︎</b> ด้านล่างจอ</li>
+      <li>เลื่อนลงแล้วแตะ <b class="k">เพิ่มไปยังหน้าจอโฮม</b></li>
+      <li>แตะ <b class="k">เพิ่ม</b> มุมขวาบน</li>
+    </ol></div>
+    <div class="os" id="os-android"><ol>
+      <li>เปิดหน้านี้ด้วย <b>Chrome</b></li>
+      <li>แตะเมนู <b class="k">⋮</b> มุมขวาบน</li>
+      <li>แตะ <b class="k">เพิ่มลงในหน้าจอหลัก</b> หรือ <b class="k">ติดตั้งแอป</b></li>
+      <li>แตะ <b class="k">เพิ่ม</b> / <b class="k">ติดตั้ง</b></li>
+    </ol></div>
+    <div class="note">แตะไอคอน "ตรวจเช็ครถ" บนหน้าจอ แล้วระบบจะเปิดแอปให้ทันที (ล็อกอินครั้งแรกครั้งเดียว ระบบจำไว้ 30 วัน)</div>
+  </div>
+</div>
+<script>
+  document.getElementById('openBtn').href = APP_URL;
+  var isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  function show(os) {
+    ['ios', 'android'].forEach(function (k) {
+      document.getElementById('os-' + k).classList.toggle('show', k === os);
+      document.querySelector('[data-os=' + k + ']').classList.toggle('on', k === os);
+    });
+  }
+  document.querySelectorAll('[data-os]').forEach(function (b) { b.onclick = function () { show(b.dataset.os); }; });
+  show(isIOS ? 'ios' : 'android');
+</script>
+</body>
+</html>
